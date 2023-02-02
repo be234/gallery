@@ -1,4 +1,6 @@
 @import "./Styles";
+@import url('https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap');
+
 
 body {
   margin: 0;
@@ -13,4 +15,221 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.navbar-1 {
+  width: 83%;
+  @include xl {
+    width: 95%;
+  }
+  @include md {
+    margin-bottom: 12px;
+  }
+  // height: 100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  top: 0;
+  left: 0;
+  // background-color: gray;
+  // @include md {
+  //   width: 90%;
+  // }
+
+  h1 {
+    font-size: $font-size-lg ;
+    @include md {
+      font-size: 1.2em;
+    }
+    font-weight: lighter;
+    color: rgb(152, 150, 150);
+  }
+  
+  ul {
+    // background-color: rgb(207, 207, 207);
+    display: flex;
+    justify-content: space-between;
+    li {
+      padding: 30px 0px 30px 40px;
+      
+      @include md {
+      padding: 20px 0px 20px 10px;
+        font-size: $font-size-sm * .9;
+      }
+
+
+      a {
+        transition: .3s;
+        color: rgb(152, 150, 150);
+        &:hover {
+          color: rgb(237, 140, 5);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+
+
+  div {
+  width: 83%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  @include xl {
+    width: 95%;
+  }
+
+  @include md {
+   flex-direction: column;
+  justify-content: center;
+  padding: 12px 0;
+
+  }
+  }
+
+  p {
+    color: lightgray;
+    // padding: 30px 0px 30px 20px;
+    font-size: $font-size-sm;
+
+    @include md {
+  font-size: $font-size-sm;
+  padding-top: 7px;
+    }
+  }
+}
+
+.flex-container {
+  width: 85%;
+  // height: 1014px;
+  margin: 0 auto;
+  // background-color: gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include xl {
+    width: 95%;
+  }
+  @include md {
+    width: 95%;
+  }
+
+  .flex-item {
+    // background-color: lightgray;
+    flex-basis: 49.5%;
+    margin-bottom: 2%;
+    @include md {
+      flex-basis: 100%;
+    }
+
+    img {
+      // height: 382px;
+      width: 100%;
+      flex-grow: 1;
+      object-fit: cover;
+      transition: .4s;
+      &:hover {
+        filter: brightness(75%);
+      }
+    }
+    p {
+      line-height: 2.5em;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: rgb(169, 169, 169);
+    }
+  }
+}
+
+// gallery layout 
+
+.container {
+  position: relative;
+  column-count: 3;
+  text-align: center; 
+  padding: 0 0px; 
+  width: 100%;
+  column-gap: 10px;
+  
+
+  @include xl {
+    width: 95%;
+  }
+  @include maxMQ(768px) {
+    column-count: 2;
+  }
+  
+  @include maxMQ(450px) {
+    column-count: 1;
+    // padding: 20px;
+  }
+
+  .image {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    a {
+      @include maxMQ(450px) {
+        pointer-events: none;
+      }
+    }
+    
+    h1{
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      font-size: 20px;
+      width: 100%;
+      height: 26px;
+      padding: 0;
+      margin: 0;
+      margin-top: -13px; /* 1/2 height */
+      text-align: center;
+      color: white;      
+      opacity: 0;
+      transition: 0.4s ease-out;
+      font-size: 25px;
+      font-weight: 400;
+     }
+  }
+
+  img {
+    width: 100%;
+    transition: 0.4s ease-out;
+  }
+
+  .image:hover img {
+    filter: brightness(85%);
+    @include maxMQ(768px) {
+      filter: brightness(100%);
+    }
+  }
+
+  .image:hover {
+    h1 {
+      opacity: 1;
+      @include maxMQ(768px) {
+        opacity: 0;
+      }
+      
+    }
+  }
 }
