@@ -25,7 +25,7 @@ const Home = () => {
             <div className="flex-container">
                 { data.map((sub) => (
                     <div className="flex-item">
-                        <a href={"/sub/" + sub["id"]} ><img src={sub["mainpic"]} alt={sub["headline"]} /></a>
+                        <a href={"/gallery/sub/" + sub["id"]} ><img src={process.env.PUBLIC_URL + sub["mainpic"]} alt={sub["title"]} /></a>
                         <p>{ sub["title"] }</p>
                     </div>
                 ))}

@@ -7,35 +7,38 @@ import { useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import Modal from './components/Modal';
+import About from './components/About';
 
 function App() {
 const location = useLocation();
-
+const [showModal, setShowModal] = useState(false);
+const [modalImage, setModalImage] = useState("");
 
   return (
 
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
+    <Modal showModal={showModal} setShowModal={setShowModal} modalImage={modalImage} />
+      <Navbar/>
      <Switch location={location} key={location.key}>
      {/* <Switch> */}
-      <Route exact path={"/"}>
-      <Navbar/>
+    <Route exact path={"/"}>
        <Home/>
-       <Footer />
-      </Route>
-      <Route path={"/sub/:id"}>
-      <Navbar/>
-       <Sub/>
-       <Footer />
-      </Route>
-      <Route path={"/about"}>
-        <h1>about</h1>
-      </Route>
-      <Route path="*">
-      <Navbar/>
+    </Route>
+
+    <Route path={"/sub/:id"}>
+       <Sub setShowModal={setShowModal} setModalImage={setModalImage}/>
+    </Route>
+
+    <Route path={"/about"}>
+        <About />
+    </Route>
+
+    <Route path="*">
        <Home/>
-       <Footer/>
-      </Route>
+    </Route>
      </Switch>
+     <Footer/>
      </AnimatePresence>
     
   );
