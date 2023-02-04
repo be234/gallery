@@ -22,7 +22,6 @@ export const data = [
         "/images/minors/nature17.avif",
         "/images/minors/nature18.jpg",
         "/images/minors/nature19.jpg",
-        "/images/minors/nature20.jpg",
         "/images/minors/nature21.jpg",
         "/images/minors/nature22.jpg",
         "/images/minors/nature23.jpg",
