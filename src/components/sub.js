@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import {data} from "./data.js";
 import uuid from 'react-uuid';
+import { useEffect } from "react";
 
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { delay: .3, duration: 0.2}
+    transition: { delay: 0, duration: 0.2}
   },
   exit: {
    opacity: 0,
@@ -24,17 +25,25 @@ const Sub = ({setShowModal, setModalImage}) => {
     setModalImage(pic);
 }
 
+
+let shuffled;
+
+useEffect(() => {
+  
 const shuffle = (array) => {
   let cIndex = array.length, rIndex;
-  while (cIndex != 0) {
+  while (cIndex !== 0) {
     rIndex = Math.floor(Math.random() * cIndex);
     cIndex--;
     [array[cIndex], array[rIndex]] = [array[rIndex], array[cIndex]];
   }
 return array;
 }
+//  shuffled = shuffle(data[id].pictures);
+//  console.log("called");
+//  console.log(data[id].pictures);
+});
 
-const shuffled = shuffle(data[id].pictures);
 
     return ( 
       <motion.div className="sub-container"
@@ -44,16 +53,16 @@ const shuffled = shuffle(data[id].pictures);
       exit="exit"
       >
             {/* <h1>Hello</h1> */}
-            {(shuffled.map((pic) => (
+            {(data[id].pictures.map((pic) => (
                 <div className="image" key={uuid()}>
                 {(window.innerWidth > 700) && <Link to={"/sub/" + data[id]["id"]} onClick={() => changeShow(pic)}  className="fancybox" data-fancybox="gallery1">
-                  <img src={process.env.PUBLIC_URL  + pic} alt={data[id]["caption"]} />
+                  <img src={process.env.PUBLIC_URL + pic} alt={data[id]["caption"]} />
                  <h1 className="caption">{data[id].caption}</h1>   
                   </Link>}
 
                   {(window.innerWidth < 700) && 
                   <>
-                  <img src={pic} alt={data[id]["caption"]} /> 
+                  <img src={process.env.PUBLIC_URL + pic} alt={data[id]["caption"]} /> 
                   <h1 className="caption">{data[id].caption}</h1>
                   </>
                   }

@@ -25,7 +25,7 @@ const Modal = ({ showModal, setShowModal, modalImage }) => {
         setShowModal(false);
     }
     return ( 
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
             { showModal && (
                 <motion.div className='backdrop'
                 variants={backdrop}
@@ -38,7 +38,7 @@ const Modal = ({ showModal, setShowModal, modalImage }) => {
                     variants={modal}
                     >
                         <Link to="/">
-                            <img src={modalImage} alt="" />
+                            <img src={process.env.PUBLIC_URL + modalImage} alt="" />
                         </Link>
                     </motion.div>
 
